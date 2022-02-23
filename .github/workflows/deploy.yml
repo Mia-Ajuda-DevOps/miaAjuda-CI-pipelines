@@ -1,0 +1,32 @@
+name: expo CI
+
+on :
+  push :
+    branches : [ develop, actions-github ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./app
+        
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v2
+      
+      - name: 🏗 Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+        
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+
+      - name: 📦 Install dependencies
+        run: yarn install
