@@ -1,0 +1,44 @@
+{
+    "expo": {
+        "name": "Mia Ajuda",
+        "slug": "miaajuda",
+        "privacy": "public",
+        "platforms": ["android"],
+        "notification": {
+            "icon": "./assets/images/logo.png",
+            "color": "#4b8ab9",
+            "androidMode": "default"
+        },
+        "version": "1.0.1 Toyger",
+        "orientation": "portrait",
+        "icon": "./assets/images/logo.png",
+        "splash": {
+            "image": "./assets/images/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#4b8ab9"
+        },
+        "updates": {
+            "fallbackToCacheTimeout": 0
+        },
+        "assetBundlePatterns": ["**/*"],
+        "ios": {
+            "supportsTablet": true
+        },
+        "packagerOpts": {
+            "config": "metro.config.js",
+            "sourceExts": [
+                "expo.ts",
+                "expo.tsx",
+                "expo.js",
+                "expo.jsx",
+                "ts",
+                "tsx",
+                "js",
+                "jsx",
+                "json",
+                "wasm",
+                "svg"
+            ]
+        }
+    }
+}
