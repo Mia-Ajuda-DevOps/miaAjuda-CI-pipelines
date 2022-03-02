@@ -41,4 +41,4 @@ Após a inicialização, pode-se seguir as instruções acima.
 diriga-se para a pasta /app e execute o comando:
 ### yarn start
 
-Após a inicialização, se bem sucedida, aparecerá o qrcode de conexão. Abra o seu emulador e, no terminal onde está o qrcode, pressione o teclado 'a'. O app deve começar a carregar dentro do emulador a partir desse momento.
+Após a inicialização, se bem sucedida, aparecerá o qrcode de conexão. Abra o seu emulador e, no terminal onde está o qrcode, pressione o teclado 'a'. O app deve começar a carregar dentro do emulador a partir desse momento. 
