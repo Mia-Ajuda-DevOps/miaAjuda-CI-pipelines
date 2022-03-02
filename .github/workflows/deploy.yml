@@ -22,12 +22,10 @@ jobs:
           node-version: 12.x
 
       - name: Config repo
-        run: |
-              cat ${{ secrets.GOOGLE_SERVICES }} > .google-services.json
-              cat ${{ secrets.FIREBASE_CONFIG_DEV }} > ./src/config/authmiaajuda-firebase-dev.json
-              cat ${{ secrets.FIREBASE_CONFIG }} > ./src/config/authmiaajuda-firebase.json
-              cat ${{ secrets.ENV_VARIABLE }} > .env
-        
+        run: 'echo "$GOOGLE_SERVICES" > .google-services.json'
+        env: 
+          GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
+
       - name: 🏗 Setup Expo
         uses: expo/expo-github-action@v7
         with:
@@ -39,4 +37,4 @@ jobs:
         run: yarn install --pure-lockfile --non-interactive
 
       - name: 🚀 Publish app
-        run: expo publish --release-channel staging --non-interactive
+        run: yes | expo publish --release-channel staging --non-interactive
