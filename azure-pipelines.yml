@@ -23,6 +23,7 @@ steps:
     echo "$FIREBASE_CONFIG_DEV" > ./src/config/authmiaajuda-firebase-dev.json
     echo "$FIREBASE_CONFIG" > ./src/config/authmiaajuda-firebase.json
     echo "$ENV_VARIABLE" > .env
+    cat google-services.json | wc
   displayName: 'Config files'
   env: 
     GOOGLE_SERVICES: $(GOOGLE_SERVICES)
