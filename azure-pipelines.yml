@@ -36,7 +36,7 @@ steps:
   displayName: 'Install dependencies'
   workingDirectory: 'app'
 
-- script: expo publish --non-interactive
+- script: npx expo publish --release-channel=staging --non-interactive
   displayName: 'Expo publish'
   env:
     EXPO_TOKEN: $(EXPO_TOKEN)
