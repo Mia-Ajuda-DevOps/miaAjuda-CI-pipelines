@@ -4,19 +4,40 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- develop
+- azure-pipelines
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
+
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: echo "Hello World"
-  displayName: 'Hello World'
+- script: npm install --save-dev expo-cli
+  displayName: 'Install expo'
+
+- script: |
+    echo "$GOOGLE_SERVICES" > google-services.json
+    echo "$FIREBASE_CONFIG_DEV" > ./src/config/authmiaajuda-firebase-dev.json
+    echo "$FIREBASE_CONFIG" > ./src/config/authmiaajuda-firebase.json
+    echo "$ENV_VARIABLE" > .env
+  displayName: 'Config files'
+  env: 
+    GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
+    FIREBASE_CONFIG_DEV: ${{ secrets.FIREBASE_CONFIG_DEV }}
+    FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+    ENV_VARIABLE: ${{ secrets.ENV_VARIABLE }}  
+  workingDirectory: 'app'
   
-- script: sleep 5
-  displayName: 'Sleep'
+- script: npm install
+  displayName: 'Install dependencies'
+  workingDirectory: 'app'
+
+- script: npx expo publish --non-interactive
+  displayName: 'Expo publish'
+  env:
+    EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+  workingDirectory: 'app'
