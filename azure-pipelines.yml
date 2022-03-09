@@ -25,10 +25,10 @@ steps:
     echo "$ENV_VARIABLE" > .env
   displayName: 'Config files'
   env: 
-    GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
-    FIREBASE_CONFIG_DEV: ${{ secrets.FIREBASE_CONFIG_DEV }}
-    FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-    ENV_VARIABLE: ${{ secrets.ENV_VARIABLE }}  
+    GOOGLE_SERVICES: $(GOOGLE_SERVICES)
+    FIREBASE_CONFIG_DEV: $(FIREBASE_CONFIG_DEV)
+    FIREBASE_CONFIG: $(FIREBASE_CONFIG)
+    MAPS_API_KEY:  $(MAPS_API_KEY)
   workingDirectory: 'app'
   
 - script: npm install
@@ -38,5 +38,5 @@ steps:
 - script: npx expo publish --non-interactive
   displayName: 'Expo publish'
   env:
-    EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+    EXPO_TOKEN: $(EXPO_TOKEN)
   workingDirectory: 'app'
